@@ -1,9 +1,9 @@
-import { Component, ElementRef, EventEmitter, Input, Output } from '@angular/core';
-import { IDynamicPerson, MgtPeoplePicker } from '@microsoft/mgt';
-import { MgtMsalAngularProvider } from './mgt-ng-auth-provider';
+import { Component, ElementRef, EventEmitter, Inject, Input, Output } from '@angular/core';
+import { IDynamicPerson, IProvider, MgtPeoplePicker, Providers } from '@microsoft/mgt';
+import { PROVIDER_TOKEN } from './provider-token';
 
 @Component({
-    selector: "mgt-ng-people-picker",
+    selector: 'mgt-ng-people-picker',
     template: ''
 })
 export class MgtNgPeoplePickerComponent {
@@ -14,10 +14,10 @@ export class MgtNgPeoplePickerComponent {
     private readonly peoplePicker: MgtPeoplePicker;
 
     constructor(
-        mgtMsalAngularProvider: MgtMsalAngularProvider,
-        elem: ElementRef<HTMLElement>
+        elem: ElementRef<HTMLElement>,
+        @Inject(PROVIDER_TOKEN) provider: IProvider
     ) {
-        mgtMsalAngularProvider.registerAsDefault();
+        Providers.globalProvider = provider;
 
         this.peoplePicker = new MgtPeoplePicker();
 

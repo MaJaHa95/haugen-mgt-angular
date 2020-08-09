@@ -1,17 +1,20 @@
-import { Component, ElementRef, Input } from '@angular/core';
-import { IDynamicPerson, MgtPerson, PersonCardInteraction, PersonViewType } from '@microsoft/mgt';
-import { MgtMsalAngularProvider } from './mgt-ng-auth-provider';
+import { Component, ElementRef, Inject, Input } from '@angular/core';
+import { IDynamicPerson, IProvider, MgtPerson, PersonCardInteraction, PersonViewType, Providers } from '@microsoft/mgt';
+import { PROVIDER_TOKEN } from './provider-token';
 
 @Component({
-    selector: "mgt-ng-person",
+    selector: 'mgt-ng-person',
     template: ''
 })
 export class MgtNgPersonComponent {
 
     private readonly mgtPerson: MgtPerson;
 
-    constructor(mgtMsalAngularProvider: MgtMsalAngularProvider, elem: ElementRef<HTMLElement>) {
-        mgtMsalAngularProvider.registerAsDefault();
+    constructor(
+        elem: ElementRef<HTMLElement>,
+        @Inject(PROVIDER_TOKEN) provider: IProvider
+    ) {
+        Providers.globalProvider = provider;
 
         this.mgtPerson = new MgtPerson();
         this.mgtPerson.view = PersonViewType.twolines;

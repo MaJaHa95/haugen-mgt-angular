@@ -7,7 +7,7 @@
       "projectType": "library",
       "root": "projects/haugen-mgt-angular",
       "sourceRoot": "projects/haugen-mgt-angular/src",
-      "prefix": "lib",
+      "prefix": "mgt-ng",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",

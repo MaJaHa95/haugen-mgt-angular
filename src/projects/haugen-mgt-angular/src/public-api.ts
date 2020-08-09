@@ -2,7 +2,7 @@
  * Public API Surface of haugen-mgt-angular
  */
 
-export * from './lib/haugen-mgt-angular.module';
-export * from './lib/mgt-ng-people-picker.component';
-export * from './lib/mgt-ng-person.component';
+export { HaugenMgtAngularModule } from './lib/haugen-mgt-angular.module';
+export { MgtNgPeoplePickerComponent } from './lib/mgt-ng-people-picker.component';
+export { MgtNgPersonComponent } from './lib/mgt-ng-person.component';
 
