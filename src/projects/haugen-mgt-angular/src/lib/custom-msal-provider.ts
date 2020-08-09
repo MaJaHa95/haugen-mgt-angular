@@ -22,6 +22,8 @@ export class CustomMsalProvider extends SimpleProvider {
   constructor(config: { userAgentApplication: UserAgentApplication }) {
     super(s => this.getAccessTokenForScopes(...s), async () => this.login(), async () => this.logout());
     this.msalService = config.userAgentApplication;
+    this.scopes = ["user.read"];
+    this.loginType = LoginType.Redirect;
 
     this.msalService.handleRedirectCallback(
         response => this.tokenReceivedCallback(response),
