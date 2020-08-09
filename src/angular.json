@@ -1,0 +1,50 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "haugen-mgt-angular": {
+      "projectType": "library",
+      "root": "projects/haugen-mgt-angular",
+      "sourceRoot": "projects/haugen-mgt-angular/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/haugen-mgt-angular/tsconfig.lib.json",
+            "project": "projects/haugen-mgt-angular/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/haugen-mgt-angular/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/haugen-mgt-angular/src/test.ts",
+            "tsConfig": "projects/haugen-mgt-angular/tsconfig.spec.json",
+            "karmaConfig": "projects/haugen-mgt-angular/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/haugen-mgt-angular/tsconfig.lib.json",
+              "projects/haugen-mgt-angular/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }},
+  "cli": {
+    "analytics": "4f5fde20-003d-4023-8f50-16b34b08e9cc"
+  },
+  "defaultProject": "haugen-mgt-angular"
+}
